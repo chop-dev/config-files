@@ -97,6 +97,9 @@ require("lazy").setup({
   -- tmux and nvim navigate keys
   { "christoomey/vim-tmux-navigator" },
 
+  -- react snippets
+  { "dsznajder/vscode-es7-javascript-react-snippets" },
+
   -- predefined snippets
   { "rafamadriz/friendly-snippets" },
 
