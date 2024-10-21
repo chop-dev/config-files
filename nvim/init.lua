@@ -101,7 +101,7 @@ require("lazy").setup({
   { "dsznajder/vscode-es7-javascript-react-snippets" },
 
   -- predefined snippets
-  { "rafamadriz/friendly-snippets" },
+  -- { "rafamadriz/friendly-snippets" },
 
   -- highlight under the word
   { "RRethy/vim-illuminate" },
