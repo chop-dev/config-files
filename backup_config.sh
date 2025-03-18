@@ -1,27 +1,45 @@
 #!/bin/bash
 
-# NVIM BACKUP
-# ===========================
+# =========================================
+# CONFIG BACKUP SCRIPT (Fixed for macOS)
+# =========================================
 
 # Define source and destination directories
-NVIM_SOURCE="$HOME/.config/nvim"
-NVIM_DESTINATION="$HOME/Developer/config-files/nvim"
+CONFIGS=(
+  "$HOME/.config/lvim:$HOME/Developer/config-files/"
+  "$HOME/.config/nvim:$HOME/Developer/config-files/"
+  "$HOME/.tmux.conf:$HOME/Developer/config-files/tmux/tmux.conf"
+  "$HOME/.zshrc:$HOME/Developer/config-files/zshrc/zshrc"
+)
 
-# Create the destination directory if it doesn't exist
-mkdir -p "$NVIM_DESTINATION"
+echo "Starting backup process..."
+echo "Configs to backup:"
 
-# Copy the nvim folder to the destination
-cp -r "$NVIM_SOURCE/"* "$NVIM_DESTINATION/"
+# Loop through configs and backup
+for CONFIG in "${CONFIGS[@]}"; do
+  IFS=":" read -r SOURCE DESTINATION <<< "$CONFIG"
+  echo " - $SOURCE → $DESTINATION"
+done
 
-echo "Neovim configuration copied to $NVIM_DESTINATION"
+for CONFIG in "${CONFIGS[@]}"; do
+  IFS=":" read -r SOURCE DESTINATION <<< "$CONFIG"
 
-# TMUX ( To Be Added )
-# ===========================
+  echo "Checking: $SOURCE"
 
+  if [ -d "$SOURCE" ] || [ -f "$SOURCE" ]; then
+    read -p " → Found! Do you want to backup $SOURCE to $DESTINATION? (y/n): " RESPONSE
+    if [[ "$RESPONSE" =~ ^[Yy]$ ]]; then
+      echo "Backing up to $DESTINATION..."
+      mkdir -p "$(dirname "$DESTINATION")"  # Create parent directories
+      cp -R "$SOURCE" "$DESTINATION"        # Fixed for macOS
+      echo " ✅ Successfully backed up $(basename "$SOURCE")"
+    else
+      echo " ❌ Skipped backing up $SOURCE"
+    fi
+  else
+    echo "⚠️  Warning: $SOURCE does not exist. Skipping..."
+  fi
+done
 
-# ZSH ( To Be Added )
-# ===========================
-
-# GIT PUSH 
-# ===========================
+echo "🌟 Backup process completed!"
 
