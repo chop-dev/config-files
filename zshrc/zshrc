@@ -1,0 +1,44 @@
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+export PATH=/Users/raynardvermeulen/.local/bin:$PATH
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/emulator
+
+# Theme
+ZSH_THEME="robbyrussell"
+
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
+
+# NOTE FZF
+eval "$(fzf --zsh)"
+
+# NOTE ZOXIDE
+eval "$(zoxide init zsh)"
+
+# NOTE ALIASES 
+ alias vim='lvim'
+ alias zshconfig="vim ~/.zshrc"
+ alias ohmyzsh="vim ~/.oh-my-zsh"
+ alias reloadconfig="source ~/.zshrc"
+ alias openpractice="cd ~/Developer/Practice/"
+ alias startSSH="ssh root@192.168.3.129"
+ alias startFaustSite="cd ~/Developer/Work/new_faustlink_home && vim"
+ alias startCustomGraph="cd ~/Developer/Practice/custom-chart && vim"
+ alias startFridgeLink="cd ~/Developer/Work/FridgeLink2.0/fridgelink2.0-frontend/ && vim"
+ alias startMobileLab="cd ~/Developer/Work/mobile-lab-unit/ && vim"
+ alias opendev="cd ~/Developer"
+ alias openresearch="cd ~/Developer/Practice/react-research/"
+
+ # NOTE FUN ALIASES
+ alias mtrx="cmatrix"
+
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
