@@ -78,11 +78,9 @@ lvim.builtin.cmp.sources = {
   { name = "buffer" },
   { name = "path" },
   { name = "cmp_git" },
-  { name = "tailwindcss-colorizer-cmp" }, -- Ensure this line is present
+  { name = "tailwindcss-colorizer-cmp" },
 }
 
--- You might also want to ensure the colorizer is included in the mapping for showing the completion menu
--- This is an example, LunarVim might have default mappings. Adjust if needed.
 local cmp = require("cmp")
 lvim.builtin.cmp.mapping = vim.tbl_extend(
   'keep',
@@ -114,7 +112,7 @@ lvim.plugins = {
   },
   { "roobert/tailwindcss-colorizer-cmp.nvim", config = function()
       require("tailwindcss-colorizer-cmp").setup {
-        color_square_width = 2,
+        color_square_width = 5,
       }
     end,
   },
